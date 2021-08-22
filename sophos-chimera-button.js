@@ -60,7 +60,7 @@ export class SophosChimeraButton extends LitElement {
   };
 
   _fireClick(e) {
-    const option = parseInt(e.target.getAttribute('option'));
+    const option = parseInt(e.currentTarget.getAttribute('option'));
     this.dispatchEvent(new CustomEvent('sophos-chimera-button-click', {
       detail : {
         option,

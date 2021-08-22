@@ -6,10 +6,26 @@ export default css`
     --sophos-chimera-button-height: 50px;
     --sophos-chimera-button-border-radius: 50px;
     --sophos-chimera-button-font-size: 1rem;
+    --sophos-chimera-button-display: flex;
+    --sophos-chimera-button-flex-direction: row;
+    --sophos-chimera-button-flex-flow: row;
+    --sophos-chimera-button-justify-content: space-around;
+    --sophos-chimera-button-align-items: center;
+    --sophos-chimera-button-justify-items: center;
+    --sophos-chimera-button-align-content: center;
   }
 
-  #solid-multi-button-container {
-    filter: var(--sophos-chimera-button-solid-multi-button-container-filter, drop-shadow(3px 10px 15px rgba(0, 0, 0, 0.45)));
+  #solid-multi-button-container, 
+  #neon-multi-button-container,
+  #simple-multi-buttons-container {
+    display: var(--sophos-chimera-button--solid-multi-button-container-neon-multi-button-container-simple-multi-buttons-container-display, var(--sophos-chimera-button-display));
+    flex-direction: var(--sophos-chimera-button--solid-multi-button-container-neon-multi-button-container-simple-multi-buttons-container-flex-direction, var(--sophos-chimera-button-flex-direction));
+    flex-flow: var(--sophos-chimera-button--solid-multi-button-container-neon-multi-button-container-simple-multi-buttons-container-flex-flow, var(--sophos-chimera-button-flex-flow));
+    justify-content: var(--sophos-chimera-button--solid-multi-button-container-neon-multi-button-container-simple-multi-buttons-container-justify-content, var(--sophos-chimera-button-justify-content));
+    align-items: var(--sophos-chimera-button--solid-multi-button-container-neon-multi-button-container-simple-multi-buttons-container-align-items, var(--sophos-chimera-button-align-items));
+    justify-items: var(--sophos-chimera-button--solid-multi-button-container-neon-multi-button-container-simple-multi-buttons-container-justify-items, var(--sophos-chimera-button-justify-items));
+    align-content: var(--sophos-chimera-button--solid-multi-button-container-neon-multi-button-container-simple-multi-buttons-container-align-content, var(--sophos-chimera-button-align-content));
+    filter: var(--sophos-chimera-button--solid-multi-button-container-neon-multi-button-container-simple-multi-buttons-container-filter, drop-shadow(3px 10px 15px rgba(0, 0, 0, 0.45)));
   }
   
   .solid-multi-buttons, #solid-single-button {
@@ -116,7 +132,7 @@ export default css`
     }
 
     #simple-single-button:hover, .simple-multi-buttons:hover {
-      opacity: var(--sophos-chimera-button-simple-single-button-hover-simple-multi-buttons-hover-opacity, 0.3);
+      opacity: var(--sophos-chimera-button-simple-single-button-hover-simple-multi-buttons-hover-opacity, 0.8);
       box-shadow: var(--sophos-chimera-button-simple-single-button-hover-simple-multi-buttons-hover-box-shadow, -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2));
     }
     #simple-single-button:active, .simple-multi-buttons:active {

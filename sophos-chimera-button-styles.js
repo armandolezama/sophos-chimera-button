@@ -1,11 +1,17 @@
 import { css } from 'lit-element';
 
 export default css`
+  :host {
+    --sophos-chimera-button-width: 200px;
+    --sophos-chimera-button-height: 100px;
+    --sophos-chimera-button-border-radius: 50px;
+  }
+
   #solid-multi-button-container {
     filter: drop-shadow(3px 10px 15px rgba(0, 0, 0, 0.45));
   }
   
-  .solid-multi-buttons{
+  .solid-multi-buttons, #solid-single-button {
     height: 50px;
     width: 100px;
     background: linear-gradient(to bottom, #bada55, #da55bb);
@@ -13,7 +19,7 @@ export default css`
     color: white;
     font-size: 1.2rem;
     border: none;
-    margin: -5px; 
+    margin: -5px;
     padding: 0;
     stroke: black;
     outline: none;
@@ -27,7 +33,7 @@ export default css`
     border-radius: 0 20px 20px 0;
   }
 
-  #solid-single-button {
+  #solid-multi-button-container #solid-single-button {
     border-radius: 20px;
   }
 
@@ -85,4 +91,43 @@ export default css`
       min-width: 80px;
     }
   }
+
+  #simple-single-button, .simple-multi-buttons {
+      border: none;
+      width: 100px;
+      height: 25px;
+      background: #f3f0f1;
+      position: relative;
+      background: #f3f0f1;
+      margin-bottom: 25px;
+      border-radius: 32px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+      box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+      color: #6f6cde;
+    }
+    #simple-single-button span, .simple-multi-buttons span {
+      line-height: 10px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 16px;
+      font-weight: semibold;
+    }
+
+    #simple-single-button:hover, .simple-multi-buttons:hover {
+      opacity: 0.3;
+      box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8), 6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+    #simple-single-button:active, .simple-multi-buttons:active {
+      opacity: 1;
+      box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+      color: #79e3b6;
+    }
+    /* 
+    to do:
+    añadir estilos para el multi simple buttons
+    hacer clases para los diseños horizontal y vertical del multi buttons, convertirlos en módulos indepentdientes
+    añadir un botón con un contenedor auxiliar a forma de botón personalizable. 
+    acoplar esta última función con la arquitectura actual
+      */
 `;

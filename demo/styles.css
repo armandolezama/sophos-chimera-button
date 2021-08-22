@@ -1,0 +1,15 @@
+#single-buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 50px;
+}
+
+#multi-buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 50px;
+}

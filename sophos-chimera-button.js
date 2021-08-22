@@ -9,9 +9,8 @@ export class SophosChimeraButton extends LitElement {
     */
   constructor() {
     super();
-    this.type = 'neon-multi-button';
-    this.solidMultibuttons = ['botón 1', 'botón 2', 'botón 3', 'botón 4', 'botón 5'];
-    this.neonMultibuttons = ['botón 1', 'botón 2', 'botón 3', 'botón 4', 'botón 5'];
+    this.type = '';
+    this.buttonsLabels = [];
   };
 
   /**
@@ -19,8 +18,8 @@ export class SophosChimeraButton extends LitElement {
     */
   static get properties() {
     return {
-      solidMultibuttons: { type : Array },
-      neonMultibuttons: { type : Array }
+      type : { type : String},
+      buttonsLabels : { type : Array },
     };
   };
 
@@ -28,48 +27,78 @@ export class SophosChimeraButton extends LitElement {
     return styles;
   };
 
-  createSolidMultiButtons() {
-    if (this.solidMultibuttons.length > 1 ){
-      return this.solidMultibuttons.map(label => html`
-      <button class="solid-multi-buttons">${label}</button>
+  _createMultiButtons(multiStyle, singleStyle) {
+    if(this.buttonsLabels.length > 1) {
+      return this.buttonsLabels.map( (label, index) => html`
+        <button
+        class="${multiStyle}"
+        option="${index}"
+        @click="${this._fireClick}">
+
+          <span
+          class="multi-button-span">
+          ${label}
+          </span>
+
+        </button>
       `);
     } else {
       return html`
-        <button id="solid-single-button">
-          ${this.solidMultibuttons[0]}
+        <button
+        id="${singleStyle}"
+        option="0"
+        @click="${this._fireClick}">
+
+          <span
+          id="single-button-span">
+          ${this.buttonsLabels[0]}
+          </span>
+
         </button>
       `;
     };
   };
 
-  createNeonMultiButtons() {
-    if(this.neonMultibuttons.length > 1){
-      return this.neonMultibuttons.map(label => html`
-        <button class="neon-multi-buttons">${label}</button>
-      `);
-    } else {
-      return html`
-        <button id="neon-single-button">
-          ${this.neonMultibuttons[0]}
-        </button>
-      `;
-    };
+  _fireClick(e) {
+    const option = parseInt(e.target.getAttribute('option'));
+    this.dispatchEvent(new CustomEvent('sophos-chimera-button-click', {
+      detail : {
+        option,
+        label : this.buttonsLabels[option]
+      }
+    }));
   };
-  
+
   render() {
     return html`
     <div id="main-container">
       ${this.type === 'solid-multi-button' ? html`      
         <div id="solid-multi-button-container">
-          ${this.createSolidMultiButtons()}
+          ${this._createMultiButtons('solid-multi-buttons', 'solid-single-button')}
         </div>
       ` : html``}
       ${this.type === 'neon-multi-button' ? html`
         <div id="neon-multi-button-container">
-          ${this.createNeonMultiButtons()}
+          ${this._createMultiButtons('neon-multi-buttons', 'neon-single-button')}
+        </div>
+      ` : html``}
+      ${this.type === 'simple-multi-button' ? html`
+        <div id="simple-multi-buttons-container">
+          ${this._createMultiButtons('simple-multi-buttons', 'simple-single-button')}
         </div>
       ` : html``}
     </div>`;
   };
 };
 customElements.define('sophos-chimera-button', SophosChimeraButton);
+/*
+https://codepen.io/zeynepozdem/pen/yLymeja
+
+https://codepen.io/ryne/pen/PoPoqgO
+
+https://codepen.io/grohit/pen/zYxMOjR
+
+https://codepen.io/jouanmarcel/pen/RwweKqb
+
+https://freefrontend.com/css-buttons/
+*/

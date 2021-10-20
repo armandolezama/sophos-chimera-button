@@ -61,17 +61,21 @@ export default css`
   }
   
   .solid-multi-buttons:active,
-  #solid-single-button:hover {
+  #solid-single-button:active {
     filter: var(--sophos-chimera-button-solid-multi-buttons-active-solid-single-button-hover-filter, none);
     transform: var(--sophos-chimera-button-solid-multi-buttons-active-solid-single-button-hover-transform, scale(.95));
   }
 
-  .neon-multi-buttons:hover, #neon-single-button:hover {
+  .neon-multi-buttons:hover, 
+  #neon-single-button:hover,
+  .neon-multi-buttons-focusable:hover, 
+  #neon-single-button-focusable:hover{
     border-color: var(--sophos-chimera-button-neon-multi-buttons-hover-neon-single-button-hover-border-color, #8eff33);
     color: var(--sophos-chimera-button-neon-multi-buttons-hover-neon-single-button-hover-color, #8eff33);
     background-color: var(--sophos-chimera-button-neon-multi-buttons-hover-neon-single-button-hover-background-color,#2e6600);
   }
-  .neon-multi-buttons:focus, #neon-single-button:focus {
+
+  .neon-multi-buttons-focusable:focus #neon-single-button-focusable:focus {
     border-color: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-border-color, #8eff33);
     color: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-color, #8eff33);
     background-color: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-background-color, #2e6600);
@@ -79,14 +83,35 @@ export default css`
     outline: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-outline, 0);
     border-radius: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-border-radius, 12px);
   }
-  .neon-multi-buttons:focus:first-child {
+  .neon-multi-buttons-focusable:focus:first-child {
     border-radius: var(--sophos-chimera-button-neon-multi-buttons-focus-first-child, 30px 12px 12px 30px);
   }
-  .neon-multi-buttons:focus:last-child {
+  .neon-multi-buttons-focusable:focus:last-child {
     border-radius: var(--sophos-chimera-button-neon-multi-buttons-focus-last-child, 12px 30px 30px 12px);
   }
 
-  .neon-multi-buttons, #neon-single-button {
+  .neon-multi-buttons:active, 
+  #neon-single-button:active,
+  .neon-multi-buttons-focusable:focus, 
+  #neon-single-button-focusable:focus {
+    border-color: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-border-color, #8eff33);
+    color: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-color, #8eff33);
+    background-color: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-background-color, #2e6600);
+    padding: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-padding, 16px 16px);
+    outline: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-outline, 0);
+    border-radius: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-border-radius, 12px);
+  }
+  .neon-multi-buttons:active:first-child {
+    border-radius: var(--sophos-chimera-button-neon-multi-buttons-focus-first-child, 30px 12px 12px 30px);
+  }
+  .neon-multi-buttons:active:last-child {
+    border-radius: var(--sophos-chimera-button-neon-multi-buttons-focus-last-child, 12px 30px 30px 12px);
+  }
+
+  .neon-multi-buttons, 
+  #neon-single-button,
+  .neon-multi-buttons-focusable, 
+  #neon-single-button-focusable {
     height: var(--sophos-chimera-button-neon-multi-buttons-neon-single-button-height, var(--sophos-chimera-button-height));
     width: var(--sophos-chimera-button-neon-multi-buttons-neon-single-button-width, var(--sophos-chimera-button-width));
     min-width:  var(--sophos-chimera-button-neon-multi-buttons-neon-single-button-min-width, 100px);

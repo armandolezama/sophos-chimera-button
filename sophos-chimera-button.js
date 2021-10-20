@@ -11,6 +11,7 @@ export class SophosChimeraButton extends LitElement {
     super();
     this.type = '';
     this.buttonsLabels = [];
+    this.neonButtonFocusable = false;
   };
 
   /**
@@ -27,13 +28,18 @@ export class SophosChimeraButton extends LitElement {
     return styles;
   };
 
-  _createMultiButtons(multiStyle, singleStyle) {
+  _createMultiButtons(multiStyle, singleStyle, focusable) {
+    multiStyle = focusable ? `${multiStyle}-focusable` : multiStyle;
+    singleStyle = focusable ? `${singleStyle}-focusable` : singleStyle;
+    
     if(this.buttonsLabels.length > 1) {
       return this.buttonsLabels.map( (label, index) => html`
         <button
         class="${multiStyle}"
         option="${index}"
-        @click="${this._fireClick}">
+        @click="${this._fireClick}"
+        @mousedown="${this.setActiveStyle}"
+        @mouseup="${this.setInactiveStyle}">
 
           <span
           class="multi-button-span">
@@ -45,9 +51,11 @@ export class SophosChimeraButton extends LitElement {
     } else {
       return html`
         <button
-        id="${singleStyle}"
+        id="${ singleStyle }"
         option="0"
-        @click="${this._fireClick}">
+        @click="${this._fireClick}"
+        @mousedown="${this.setActiveStyle}"
+        @mouseup="${this.setInactiveStyle}">
 
           <span
           id="single-button-span">
@@ -74,17 +82,17 @@ export class SophosChimeraButton extends LitElement {
     <div id="main-container">
       ${this.type === 'solid-multi-button' ? html`      
         <div id="solid-multi-button-container">
-          ${this._createMultiButtons('solid-multi-buttons', 'solid-single-button')}
+          ${this._createMultiButtons('solid-multi-buttons', 'solid-single-button', false)}
         </div>
       ` : html``}
       ${this.type === 'neon-multi-button' ? html`
         <div id="neon-multi-button-container">
-          ${this._createMultiButtons('neon-multi-buttons', 'neon-single-button')}
+          ${this._createMultiButtons('neon-multi-buttons', 'neon-single-button', this.neonButtonFocusable)}
         </div>
       ` : html``}
       ${this.type === 'simple-multi-button' ? html`
         <div id="simple-multi-buttons-container">
-          ${this._createMultiButtons('simple-multi-buttons', 'simple-single-button')}
+          ${this._createMultiButtons('simple-multi-buttons', 'simple-single-button', false)}
         </div>
       ` : html``}
     </div>`;

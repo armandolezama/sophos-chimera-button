@@ -72,7 +72,6 @@ export class SophosChimeraButton extends LitElement {
     const detail = {
       buttonDescription :{ option, ...this.buttonsLabels[option]}
     };
-    console.log(detail);
     this.dispatchEvent(new CustomEvent('sophos-chimera-button-click', {
       detail
     }));

@@ -10,8 +10,24 @@ const multiCollection = [
   document.getElementById('simple-multi-button')
 ]
 
-const singleLabel =  ['botón 1'];
-const multiLabel = ['botón 1', 'botón 2', 'botón 3'];
+const singleLabel =  [{
+  label: 'botón 1',
+  key: 'first-button',
+}];
+const multiLabel = [
+  {
+    label: 'botón 1',
+    key: 'first-button',
+  },
+  {
+    label: 'botón 2',
+    key: 'second-button',
+  },
+  {
+    label: 'botón 3',
+    key: 'third-button',
+  },
+];
 
 for (const button of singleCollection) {
   button.buttonsLabels = [...singleLabel];

@@ -94,12 +94,12 @@ export default css`
   #neon-single-button:active,
   .neon-multi-buttons-focusable:focus, 
   #neon-single-button-focusable:focus {
-    border-color: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-border-color, #8eff33);
-    color: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-color, #8eff33);
-    background-color: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-background-color, #2e6600);
-    padding: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-padding, 16px 16px);
-    outline: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-outline, 0);
-    border-radius: var(--sophos-chimera-button-neon-multi-buttons-focus-neon-single-button-focus-border-radius, 12px);
+    border-color: var(--sophos-chimera-button-neon-multi-buttons-active-neon-single-button-active-border-color, #8eff33);
+    color: var(--sophos-chimera-button-neon-multi-buttons-active-neon-single-button-active-color, #8eff33);
+    background-color: var(--sophos-chimera-button-neon-multi-buttons-active-neon-single-button-active-background-color, #2e6600);
+    padding: var(--sophos-chimera-button-neon-multi-buttons-active-neon-single-button-active-padding, 16px 16px);
+    outline: var(--sophos-chimera-button-neon-multi-buttons-active-neon-single-button-active-outline, 0);
+    border-radius: var(--sophos-chimera-button-neon-multi-buttons-active-neon-single-button-active-border-radius, 12px);
   }
   .neon-multi-buttons:active:first-child {
     border-radius: var(--sophos-chimera-button-neon-multi-buttons-focus-first-child, 30px 12px 12px 30px);

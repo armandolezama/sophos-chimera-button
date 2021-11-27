@@ -33,9 +33,9 @@ export class SophosChimeraButton extends LitElement {
     singleStyle = focusable ? `${singleStyle}-focusable` : singleStyle;
     
     if(this.buttonsLabels.length > 1) {
-      return this.buttonsLabels.map( (label, index) => html`
+      return this.buttonsLabels.map( (buttonDescription, index) => html`
         <button
-        class="${multiStyle}"
+        class="${ multiStyle }"
         option="${index}"
         @click="${this._fireClick}"
         @mousedown="${this.setActiveStyle}"
@@ -43,7 +43,7 @@ export class SophosChimeraButton extends LitElement {
 
           <span
           class="multi-button-span">
-          ${label}
+          ${buttonDescription.label}
           </span>
 
         </button>
@@ -59,7 +59,7 @@ export class SophosChimeraButton extends LitElement {
 
           <span
           id="single-button-span">
-          ${this.buttonsLabels[0]}
+          ${this.buttonsLabels[0].label}
           </span>
 
         </button>
@@ -69,11 +69,12 @@ export class SophosChimeraButton extends LitElement {
 
   _fireClick(e) {
     const option = parseInt(e.currentTarget.getAttribute('option'));
+    const detail = {
+      buttonDescription :{ option, ...this.buttonsLabels[option]}
+    };
+    console.log(detail);
     this.dispatchEvent(new CustomEvent('sophos-chimera-button-click', {
-      detail : {
-        option,
-        label : this.buttonsLabels[option]
-      }
+      detail
     }));
   };
 

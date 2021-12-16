@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from 'lit';
 import styles from './sophos-chimera-button-styles';
 
 export class SophosChimeraButton extends LitElement {
@@ -7,39 +7,39 @@ export class SophosChimeraButton extends LitElement {
     * state, set up event listeners, create shadow dom.
     * @constructor
     */
-  constructor() {
+  constructor () {
     super();
     this.type = '';
     this.buttonsLabels = [];
     this.neonButtonFocusable = false;
-  };
+  }
 
   /**
     * Declared properties and their corresponding attributes
     */
-  static get properties() {
+  static get properties () {
     return {
       type : { type : String},
       buttonsLabels : { type : Array },
     };
-  };
+  }
 
-  static get styles() {
+  static get styles () {
     return styles;
-  };
+  }
 
-  _createMultiButtons(multiStyle, singleStyle, focusable) {
+  _createMultiButtons (multiStyle, singleStyle, focusable) {
     multiStyle = focusable ? `${multiStyle}-focusable` : multiStyle;
     singleStyle = focusable ? `${singleStyle}-focusable` : singleStyle;
     
     if(this.buttonsLabels.length > 1) {
       return this.buttonsLabels.map( (buttonDescription, index) => html`
         <button
-        class="${ multiStyle }"
-        option="${index}"
-        @click="${this._fireClick}"
-        @mousedown="${this.setActiveStyle}"
-        @mouseup="${this.setInactiveStyle}">
+        class=${ multiStyle }
+        option=${index}
+        @click=${this._fireClick}
+        @mousedown=${this.setActiveStyle}
+        @mouseup=${this.setInactiveStyle}>
 
           <span
           class="multi-button-span">
@@ -51,11 +51,11 @@ export class SophosChimeraButton extends LitElement {
     } else {
       return html`
         <button
-        id="${ singleStyle }"
+        id=${ singleStyle }
         option="0"
-        @click="${this._fireClick}"
-        @mousedown="${this.setActiveStyle}"
-        @mouseup="${this.setInactiveStyle}">
+        @click=${this._fireClick}
+        @mousedown=${this.setActiveStyle}
+        @mouseup=${this.setInactiveStyle}>
 
           <span
           id="single-button-span">
@@ -64,10 +64,10 @@ export class SophosChimeraButton extends LitElement {
 
         </button>
       `;
-    };
-  };
+    }
+  }
 
-  _fireClick(e) {
+  _fireClick (e) {
     const option = parseInt(e.currentTarget.getAttribute('option'));
     const detail = {
       buttonDescription :{ option, ...this.buttonsLabels[option]}
@@ -75,9 +75,9 @@ export class SophosChimeraButton extends LitElement {
     this.dispatchEvent(new CustomEvent('sophos-chimera-button-click', {
       detail
     }));
-  };
+  }
 
-  render() {
+  render () {
     return html`
     <div id="main-container">
       ${this.type === 'solid-multi-button' ? html`      
@@ -96,8 +96,8 @@ export class SophosChimeraButton extends LitElement {
         </div>
       ` : html``}
     </div>`;
-  };
-};
+  }
+}
 customElements.define('sophos-chimera-button', SophosChimeraButton);
 /*
 https://codepen.io/zeynepozdem/pen/yLymeja

@@ -10,7 +10,7 @@ const multiCollection = [
   document.getElementById('simple-multi-button')
 ]
 
-const singleLabel =  [{
+const singleLabel = [{
   label: 'botón 1',
   key: 'first-button',
 }];
